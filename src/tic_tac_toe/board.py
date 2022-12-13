@@ -28,3 +28,15 @@ class Board:
 
         self.current_player_symbol = int(Display.rich_input(
             "\n\tEnter one of the above options", options=symbol_options))
+
+        if self.current_player_symbol == 1:
+            self.player.X = self.player.name
+            self.player.O = "Computer"
+
+            Display.show_player_info(self.player, mode=f"Player Information")
+
+        else:
+            self.player.X = "Computer"
+            self.player.O = self.player.name
+
+            Display.show_player_info(self.player, mode=f"Player Information")
