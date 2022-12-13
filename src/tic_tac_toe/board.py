@@ -63,5 +63,10 @@ class Board:
         self.player2.name = Prompt.ask(
             rainbow("\n\tEnter Player Name O >"), default="Player O")
         self.player2.O = self.player2.name
+        self.player2.X = self.player1.name
+        self.player1.O = self.player2.name
 
         print(f"\n\tWelcome {self.player1.name} and {self.player2.name}!")
+        print("\n\tX goes first....")
+        print(emoji.emojize("\n\tLets get started :red_heart:",
+                            variant="emoji_type"))
