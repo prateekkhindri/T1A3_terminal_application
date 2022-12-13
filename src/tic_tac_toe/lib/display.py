@@ -1,5 +1,6 @@
 import termcolor
 import rich
+import emoji
 from rich.table import Table
 from rich.padding import Padding
 from rich.prompt import Prompt
@@ -50,3 +51,14 @@ class Display:
         termcolor.cprint(
             f"\t|                {text}              |", color="white")
         print("\t---------------------------------------------------")
+
+    @classmethod
+    def show_player_info(self, player, mode):
+        print("\t---------------------------------------------------")
+        termcolor.cprint(
+            f"\t|                      {mode}                 |", color="white")
+        print("\t---------------------------------------------------")
+        print(emoji.emojize(
+            "\tPlayer X :heavy_equals_sign: " + str(player.X)+""))
+        print(emoji.emojize("\tPlayer O :heavy_equals_sign: "+str(player.O)))
+        print("\t---------------------------------------------------\n")
