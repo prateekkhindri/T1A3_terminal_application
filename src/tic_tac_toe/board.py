@@ -16,6 +16,8 @@ class Board:
     def play(self, mode):
         if mode == 1:
             return self.play_with_computer()
+        elif mode == 2:
+            return self.play_with_player()
 
     def play_with_computer(self):
         Display.fancy_print("Playing With Computer")
@@ -48,3 +50,6 @@ class Board:
             print("\n\tX goes first....")
             print(emoji.emojize("\n\tLets get started :red_heart:",
                                 variant="emoji_type"))
+
+    def play_with_player(self):
+        Display.fancy_print("Playing In Multiplayer")
