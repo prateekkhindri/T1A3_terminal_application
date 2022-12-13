@@ -5,6 +5,7 @@ from rich.table import Table
 from rich.padding import Padding
 from rich.prompt import Prompt
 from constants import console, text_color
+from prompt_toolkit import print_formatted_text, HTML
 
 
 class Display:
@@ -63,3 +64,28 @@ class Display:
         print(emoji.emojize(
             "                   \tPlayer O :heavy_equals_sign:  " + str(player.O)))
         print("\t---------------------------------------------------\n")
+
+    @classmethod
+    def show_board(self, map_value, player_name, board_values, final):
+        if final == None:
+            termcolor.cprint(
+                f"\n\tCurrent Player: {player_name}\n", color="yellow")
+        else:
+            termcolor.cprint(
+                f"\n\tFinal Result: {player_name}\n", color="yellow")
+
+        termcolor.cprint("\n\tCurrent State Of Board : \n\n", color="green")
+        print("\n")
+        termcolor.cprint("\t     |     |", color="white")
+        print_formatted_text(HTML("\t  {}  |  {}  |  {}".format(map_value.get(
+            board_values[0]), map_value.get(board_values[1]), map_value.get(board_values[2]))))
+        termcolor.cprint('\t_____|_____|_____', color="white")
+        termcolor.cprint("\t     |     |", color="white")
+        print_formatted_text(HTML("\t  {}  |  {}  |  {}".format(map_value.get(
+            board_values[3]), map_value.get(board_values[4]), map_value.get(board_values[5]))))
+        termcolor.cprint('\t_____|_____|_____', color="white")
+        termcolor.cprint("\t     |     |", color="white")
+        print_formatted_text(HTML("\t  {}  |  {}  |  {}".format(map_value.get(
+            board_values[6]), map_value.get(board_values[7]), map_value.get(board_values[8]))))
+        termcolor.cprint("\t     |     |", color="white")
+        print("\n")

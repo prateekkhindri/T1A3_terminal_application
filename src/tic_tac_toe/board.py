@@ -1,3 +1,4 @@
+import numpy as np
 import emoji
 from lib.display import Display
 from player import Player
@@ -8,7 +9,9 @@ from constants import *
 
 class Board:
     def __init__(self, game_mode):
+        self.board_array = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0])
         self.game_mode = game_mode
+        self.map_value = None
         self.current_player_symbol = None
         if game_mode == 1:
             self.player = Player()
@@ -70,3 +73,7 @@ class Board:
         print("\n\tX goes first....")
         print(emoji.emojize("\n\tLets get started :red_heart:",
                             variant="emoji_type"))
+
+    def display_board(self, player_name, final=None):
+        Display.show_board(self.map_value, player_name,
+                           self.board_array, final)
