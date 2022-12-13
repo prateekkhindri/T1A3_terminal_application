@@ -3,10 +3,13 @@ from lib.display import Display
 from player import Player
 from rainbow_highlighter import rainbow
 from rich.prompt import Prompt
+from constants import *
 
 
 class Board:
     def __init__(self, game_mode):
+        self.game_mode = game_mode
+        self.current_player_symbol = None
         if game_mode == 1:
             self.player = Player()
 
@@ -22,3 +25,6 @@ class Board:
         print(f"\n\t Welcome {self.player.name}!")
 
         Display.show_select_symbol_screen()
+
+        self.current_player_symbol = int(Display.rich_input(
+            "\n\tEnter one of the above options", options=symbol_options))
