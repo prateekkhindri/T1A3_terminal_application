@@ -49,7 +49,7 @@ class Display:
     def fancy_print(self, text):
         print("\t---------------------------------------------------")
         termcolor.cprint(
-            f"\t|                {text}              |", color="white")
+            f"\t|              {text}              |", color="white")
         print("\t---------------------------------------------------")
 
     @classmethod

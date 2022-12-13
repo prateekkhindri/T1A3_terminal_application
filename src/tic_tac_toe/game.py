@@ -1,16 +1,21 @@
 from constants import style, game_mode_options, title
 from prompt_toolkit.shortcuts import yes_no_dialog
 from lib.display import Display
+from board import Board
 
 
 class Game:
     def __init__(self):
+        self.board = None
+        self.game_result = None
         self.game_mode_choice = None
 
     def start(self):
         start_game = self.welcome_screen()
         if start_game:
             self.game_mode_choice = self.select_game_mode()
+            self.board = Board(self.game_mode_choice)
+            self.game_result = self.board.play(self.game_mode_choice)
 
     def welcome_screen(self):
         return yes_no_dialog(
