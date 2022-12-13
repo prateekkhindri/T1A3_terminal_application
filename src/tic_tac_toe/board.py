@@ -1,4 +1,4 @@
-
+import emoji
 from lib.display import Display
 from player import Player
 from rainbow_highlighter import rainbow
@@ -35,8 +35,16 @@ class Board:
 
             Display.show_player_info(self.player, mode=f"Player Information")
 
+            print("\n\tX goes first....")
+            print(emoji.emojize("\n\tLets get started :red_heart:",
+                                variant="emoji_type"))
+
         else:
             self.player.X = "Computer"
             self.player.O = self.player.name
 
             Display.show_player_info(self.player, mode=f"Player Information")
+
+            print("\n\tX goes first....")
+            print(emoji.emojize("\n\tLets get started :red_heart:",
+                                variant="emoji_type"))
