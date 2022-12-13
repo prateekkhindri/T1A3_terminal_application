@@ -35,7 +35,7 @@ class Display:
         console.print(Padding(table, pad=(2, 0, 1, 8)))
 
     @classmethod
-    def show_select_symbol_screen():
+    def show_select_symbol_screen(self):
         table = Table(title="Select Symbol", title_justify="center", width=50)
         table.add_column("S.No", style="cyan", no_wrap=True)
         table.add_column("Symbol", style="magenta")

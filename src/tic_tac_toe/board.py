@@ -20,3 +20,5 @@ class Board:
             rainbow("\n\tEnter Player Name"), default="Player")
 
         print(f"\n\t Welcome {self.player.name}!")
+
+        Display.show_select_symbol_screen()
