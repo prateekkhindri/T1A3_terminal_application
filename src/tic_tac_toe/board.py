@@ -12,6 +12,9 @@ class Board:
         self.current_player_symbol = None
         if game_mode == 1:
             self.player = Player()
+        elif game_mode == 2:
+            self.player1 = Player()
+            self.player2 = Player()
 
     def play(self, mode):
         if mode == 1:
@@ -53,3 +56,12 @@ class Board:
 
     def play_with_player(self):
         Display.fancy_print("Playing In Multiplayer")
+        self.player1.name = Prompt.ask(
+            rainbow("\n\tEnter Player Name X >"), default="Player X")
+        self.player1.X = self.player1.name
+
+        self.player2.name = Prompt.ask(
+            rainbow("\n\tEnter Player Name O >"), default="Player O")
+        self.player2.O = self.player2.name
+
+        print(f"\n\tWelcome {self.player1.name} and {self.player2.name}!")
