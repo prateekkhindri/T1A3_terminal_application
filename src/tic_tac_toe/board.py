@@ -1,6 +1,8 @@
 
 from lib.display import Display
 from player import Player
+from rainbow_highlighter import rainbow
+from rich.prompt import Prompt
 
 
 class Board:
@@ -14,3 +16,5 @@ class Board:
 
     def play_with_computer(self):
         Display.fancy_print("Playing With Computer")
+        self.player.name = Prompt.ask(
+            rainbow("\n\tEnter Player Name"), default="Player")
