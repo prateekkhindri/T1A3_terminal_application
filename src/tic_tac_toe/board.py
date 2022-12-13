@@ -18,3 +18,5 @@ class Board:
         Display.fancy_print("Playing With Computer")
         self.player.name = Prompt.ask(
             rainbow("\n\tEnter Player Name"), default="Player")
+
+        print(f"\n\t Welcome {self.player.name}!")
