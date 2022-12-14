@@ -1,10 +1,12 @@
 import numpy as np
 import emoji
+import time
 from lib.display import Display
 from player import Player
 from rainbow_highlighter import rainbow
 from rich.prompt import Prompt
 from constants import *
+from lib.ai import AI
 
 
 class Board:
@@ -46,6 +48,12 @@ class Board:
             print("\n\tX goes first....")
             print(emoji.emojize("\n\tLets get started :red_heart:",
                                 variant="emoji_type"))
+            time.sleep(2)
+
+            for i in range(0, 9):
+                if (AI.analyze_board(self.board_array) != 0):
+                    break
+                self.display_board(self.player.name)
 
         else:
             self.player.X = "Computer"
@@ -56,6 +64,12 @@ class Board:
             print("\n\tX goes first....")
             print(emoji.emojize("\n\tLets get started :red_heart:",
                                 variant="emoji_type"))
+            time.sleep(3)
+
+            for i in range(0, 9):
+                if (AI.analyze_board(self.board_array) != 0):
+                    break
+                self.display_board(self.player.name)
 
     def play_with_player(self):
         Display.fancy_print("Playing In Multiplayer")
