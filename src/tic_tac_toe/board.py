@@ -61,6 +61,12 @@ class Board:
                 if (AI.analyze_board(self.board_array) != 0):
                     break
                 self.display_board(self.player.name)
+                if ((i+self.current_player_symbol) % 2 == 0):
+                    self.computer_turn()
+                else:
+                    self.user_turn("x", name=f"{self.player.name}(X)")
+
+            return self
 
         else:
             self.player.X = "Computer"
@@ -83,9 +89,22 @@ class Board:
                 if (AI.analyze_board(self.board_array) != 0):
                     break
                 self.display_board(self.player.name)
+                if ((i+self.current_player_symbol) % 2 == 0):
+                    self.computer_turn()
+                else:
+                    self.user_turn("o", options=None,
+                                   name=f"{self.player.name}(O)")
 
-    def user_turn(self):
-        pass
+    def user_turn(self, symbol, options=None, name=None):
+        while True:
+            pos = self.process_position(options, name, symbol)
+            if pos == -1:
+                continue
+            else:
+                break
+        self.board_array[pos-1] = -1
+
+        return pos
 
     def computer_turn(self):
         pass
@@ -106,6 +125,18 @@ class Board:
         print("\n\tX goes first....")
         print(emoji.emojize("\n\tLets get started :red_heart:",
                             variant="emoji_type"))
+
+    def process_position(self, options=None, name=None, player=None):
+        pos = self.input_position(name, options, player)
+        if pos != "" and pos.isnumeric():
+            pos = int(pos)
+
+    def input_position(self, name, options, player):
+        text = Text()
+        text.append(f'\t{name}', style=color.get(player))
+        text.append(' Enter your position from [1-9]', style=color.get("text"))
+        pos = Prompt.ask(text, choices=options)
+        return pos
 
     def display_board(self, player_name, final=None):
         Display.show_board(self.map_value, player_name,
