@@ -7,6 +7,7 @@ from rainbow_highlighter import rainbow
 from rich.prompt import Prompt
 from constants import *
 from lib.ai import AI
+from rich.text import Text
 
 
 class Board:
@@ -43,6 +44,12 @@ class Board:
             self.player.X = self.player.name
             self.player.O = "Computer"
 
+            self.map_value = {
+                -1: '<ansigreen>X</ansigreen>',
+                1: '<ansiyellow>O</ansiyellow>',
+                0: " "
+            }
+
             Display.show_player_info(self.player, mode=f"Player Information")
 
             print("\n\tX goes first....")
@@ -61,6 +68,12 @@ class Board:
 
             Display.show_player_info(self.player, mode=f"Player Information")
 
+            self.map_value = {
+                -1: '<ansigreen>O</ansigreen>',
+                1: '<ansired>X</ansired>',
+                0: " "
+            }
+
             print("\n\tX goes first....")
             print(emoji.emojize("\n\tLets get started :red_heart:",
                                 variant="emoji_type"))
@@ -70,6 +83,12 @@ class Board:
                 if (AI.analyze_board(self.board_array) != 0):
                     break
                 self.display_board(self.player.name)
+
+    def user_turn(self):
+        pass
+
+    def computer_turn(self):
+        pass
 
     def play_with_player(self):
         Display.fancy_print("Playing In Multiplayer")
