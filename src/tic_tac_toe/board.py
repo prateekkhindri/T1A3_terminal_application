@@ -1,4 +1,5 @@
 import numpy as np
+import termcolor
 import emoji
 import time
 from lib.display import Display
@@ -130,6 +131,21 @@ class Board:
         pos = self.input_position(name, options, player)
         if pos != "" and pos.isnumeric():
             pos = int(pos)
+            if pos-1 < len(self.board_array):
+                if (self.board_array[pos-1] != 0):
+                    termcolor.cprint(
+                        "\tPlease use the available options\n", color="red")
+                    return -1
+                else:
+                    return pos
+            else:
+                termcolor.cprint(
+                    "\tPlease use the available options\n", color="red")
+                return -1
+
+        else:
+            termcolor.cprint("\tPlease use the available options", color="red")
+            return -1
 
     def input_position(self, name, options, player):
         text = Text()
