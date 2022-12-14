@@ -108,6 +108,7 @@ class Board:
                 else:
                     self.user_turn("o", options=None,
                                    name=f"{self.player.name}(O)")
+            return self
 
     def user_turn(self, symbol, options=None, name=None):
         while True:
@@ -147,10 +148,40 @@ class Board:
         self.player2.X = self.player1.name
         self.player1.O = self.player2.name
 
+        self.map_value = {
+            -1: '<ansigreen>X</ansigreen>',
+            1: '<ansiyellow>O</ansiyellow>',
+            0: " "
+        }
+
+        self.map_value_file = {
+            -1: 'X',
+            1: 'O',
+            0: " "
+        }
+
         print(f"\n\tWelcome {self.player1.name} and {self.player2.name}!")
         print("\n\tX goes first....")
         print(emoji.emojize("\n\tLets get started :red_heart:",
                             variant="emoji_type"))
+        time.sleep(2)
+        options = [str(i) for i in range(1, 10)]
+        used_option = None
+
+        for i in range(0, 9):
+            if (AI.analyze_board(self.board_array) != 0):
+                break
+            if (i % 2 == 0):
+                self.display_board(self.player1.name)
+                used_option = self.user_turn(
+                    "x", options=options, name=f"{self.player1.name}(X)")
+            else:
+                self.display_board(self.player2.name)
+                used_option = self.multiplayer_user_turn(
+                    options=options, name=f"{self.player2.name}(O)")
+            if str(used_option) in options:
+                options.remove(str(used_option))
+        return self
 
     def process_position(self, options=None, name=None, player=None):
         pos = self.input_position(name, options, player)
