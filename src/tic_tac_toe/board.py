@@ -108,7 +108,19 @@ class Board:
         return pos
 
     def computer_turn(self):
-        pass
+        pos = -1
+        value = -2
+        for i in range(0, 9):
+            if (self.board_array[i] == 0):
+                self.board_array[i] = 1
+                score = -AI.minimax(self.board_array, -1)
+                self.board_array[i] = 0
+                if (score > value):
+                    value = score
+                    pos = i
+
+        self.board_array[pos] = 1
+        return pos
 
     def play_with_player(self):
         Display.fancy_print("Playing In Multiplayer")
