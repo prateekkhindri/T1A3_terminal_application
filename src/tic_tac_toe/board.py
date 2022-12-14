@@ -16,6 +16,7 @@ class Board:
         self.board_array = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0])
         self.game_mode = game_mode
         self.map_value = None
+        self.map_value_file = None
         self.current_player_symbol = None
         if game_mode == 1:
             self.player = Player()
@@ -51,6 +52,12 @@ class Board:
                 0: " "
             }
 
+            self.map_value_file = {
+                -1: 'X',
+                1: 'O',
+                0: " "
+            }
+
             Display.show_player_info(self.player, mode=f"Player Information")
 
             print("\n\tX goes first....")
@@ -78,6 +85,12 @@ class Board:
             self.map_value = {
                 -1: '<ansigreen>O</ansigreen>',
                 1: '<ansired>X</ansired>',
+                0: " "
+            }
+
+            self.map_value_file = {
+                -1: 'O',
+                1: 'X',
                 0: " "
             }
 
@@ -169,3 +182,13 @@ class Board:
     def display_board(self, player_name, final=None):
         Display.show_board(self.map_value, player_name,
                            self.board_array, final)
+
+    def multiplayer_user_turn(self, options=None, name=None):
+        while True:
+            pos = self.process_position(options, name, "o")
+            if pos == -1:
+                continue
+            else:
+                break
+        self.board_array[pos-1] = 1
+        return pos
