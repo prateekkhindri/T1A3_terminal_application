@@ -2,6 +2,7 @@ from constants import style, game_mode_options, title
 from prompt_toolkit.shortcuts import yes_no_dialog
 from lib.display import Display
 from board import Board
+from lib.ai import AI
 
 
 class Game:
@@ -16,10 +17,11 @@ class Game:
             self.game_mode_choice = self.select_game_mode()
             self.board = Board(self.game_mode_choice)
             self.game_result = self.board.play(self.game_mode_choice)
+            decision = AI.make_decision(self.game_result)
 
     def welcome_screen(self):
         return yes_no_dialog(
-            title='Welcome to Tic Tac Toe ',
+            title='UNBEATABLE TIC TAC TOE',
             text='Created by Prateek Khindri\n\nWould you like to play a game?', style=style
         ).run()
 
