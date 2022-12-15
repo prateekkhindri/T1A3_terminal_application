@@ -1,5 +1,5 @@
 import termcolor
-from constants import style, game_mode_options, title
+from constants import style, game_mode_options, title, json_file_name
 from prompt_toolkit.shortcuts import yes_no_dialog
 from lib.display import Display
 from board import Board
@@ -23,6 +23,14 @@ class Game:
             if Utils.ask_save() == "yes":
                 termcolor.cprint(
                     "\n\tSuccessfully saved user data in the data directory", color="green")
+
+            if self.game_mode_choice == 1:
+                Utils.save_json(
+                    name=json_file_name,
+                    data=self.game_result.computer_json_data,
+                    decision=decision,
+                    key=self.game_result.player.name,
+                    player=self.game_result.current_player_symbol)
 
     def welcome_screen(self):
         return yes_no_dialog(

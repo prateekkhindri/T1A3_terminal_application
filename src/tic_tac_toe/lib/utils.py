@@ -23,6 +23,28 @@ class Utils:
         return json.load(f)
 
     @classmethod
+    def save_json(self, name, data, decision, key, player):
+        if key not in data['player'].keys():
+            data['player'][key] = {
+                "wins": 0,
+                "losses": 0,
+                "draw": 0
+            }
+
+        if decision == 0:
+            data['computer']['draw'] += 1
+            data['player'][key]['draw'] += 1
+        elif decision == player:
+            data['player'][key]['wins'] += 1
+            data['computer']['losses'] += 1
+        else:
+            data['player'][key]['losses'] += 1
+            data['computer']['wins'] += 1
+
+        with open(f"data/{name}", "w") as f:
+            json.dump(data, f, indent=4)
+
+    @classmethod
     def ask_save(self):
         while True:
             askForSave = input("\n\tSave User Data? [yes|no]:")
