@@ -40,16 +40,21 @@ class AI:
             player_name = None
             board.display_board(player_name, final=1)
             termcolor.cprint("\n\tTie!!!", color="yellow")
+            board.session_file.write("\tTie!!!\n")
             return 0
 
         if (x == Utils.get_key(board.map_value_file, 'X')):
             winner = board.player1 if board.game_mode == 2 else board.player
             board.display_board(winner.name, final=1)
             termcolor.cprint("\n\t{} wins".format(winner.X), color="green")
+            board.session_file.write("\n\t{} wins".format(winner.X))
             return 1
 
         if (x == Utils.get_key(board.map_value_file, 'O')):
             winner = board.player2 if board.game_mode == 2 else board.player
             board.display_board(winner.name, final=1)
             termcolor.cprint("\n\t{} wins".format(winner.O), color="green")
+            board.session_file.write("\n\t{} wins".format(winner.O))
             return 2
+
+        board.session_file.close()
