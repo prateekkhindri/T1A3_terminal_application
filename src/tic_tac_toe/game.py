@@ -1,6 +1,7 @@
+import time
 import termcolor
 from constants import style, game_mode_options, title, json_file_name, multi_json_file_name
-from prompt_toolkit.shortcuts import yes_no_dialog
+from prompt_toolkit.shortcuts import yes_no_dialog, button_dialog, message_dialog
 from lib.display import Display
 from board import Board
 from lib.ai import AI
@@ -38,6 +39,25 @@ class Game:
                     decision=decision,
                     user1=self.game_result.player2.name,
                     user2=self.game_result.player1.name)
+            time.sleep(3)
+            self.show_menu(decision)
+
+    def show_menu(self, result="Game Over"):
+        result = button_dialog(
+            title='TicTacToe Game',
+            text=f'Want to play again?',
+            buttons=[
+                ('New Game', True),
+                ('Quit', False),
+            ],
+            style=style
+        ).run()
+
+        if result:
+            Utils.clear()
+            self.start()
+        else:
+            self.quit()
 
     def welcome_screen(self):
         return yes_no_dialog(
@@ -53,3 +73,11 @@ class Game:
         )
 
         return int(user_option)
+
+    def quit(self):
+        message_dialog(
+            title=title,
+            text='Press ENTER to quit',
+            style=style
+        ).run()
+        exit(0)

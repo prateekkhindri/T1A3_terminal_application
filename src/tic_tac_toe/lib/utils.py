@@ -91,6 +91,16 @@ class Utils:
         session_file.write("\n")
 
     @classmethod
+    def clear(self):
+        # For windows
+        if os.name == 'nt':
+            _ = os.system('cls')
+
+        # For mac and linux(os name is posix)
+        else:
+            _ = os.system('clear')
+
+    @classmethod
     def ask_save(self):
         while True:
             askForSave = input("\n\tSave User Data? [yes|no]:")
