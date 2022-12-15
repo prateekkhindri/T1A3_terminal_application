@@ -1,8 +1,10 @@
+import termcolor
 from constants import style, game_mode_options, title
 from prompt_toolkit.shortcuts import yes_no_dialog
 from lib.display import Display
 from board import Board
 from lib.ai import AI
+from lib.utils import Utils
 
 
 class Game:
@@ -18,6 +20,9 @@ class Game:
             self.board = Board(self.game_mode_choice)
             self.game_result = self.board.play(self.game_mode_choice)
             decision = AI.make_decision(self.game_result)
+            if Utils.ask_save() == "yes":
+                termcolor.cprint(
+                    "\n\tSuccessfully saved user data in the data directory", color="green")
 
     def welcome_screen(self):
         return yes_no_dialog(

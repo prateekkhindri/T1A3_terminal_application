@@ -1,5 +1,6 @@
 import os
 import json
+import termcolor
 
 
 class Utils:
@@ -20,3 +21,17 @@ class Utils:
 
         f = open(os.path.join("data/", name))
         return json.load(f)
+
+    @classmethod
+    def ask_save(self):
+        while True:
+            askForSave = input("\n\tSave User Data? [yes|no]:")
+            if (askForSave == "yes"):
+                break
+            elif (askForSave == "no"):
+                break
+            else:
+                termcolor.cprint(
+                    "\n\tPlease select one of the available options", color="red")
+                continue
+        return askForSave
