@@ -8,12 +8,16 @@ from rainbow_highlighter import rainbow
 from rich.prompt import Prompt
 from constants import *
 from lib.ai import AI
+from lib.utils import Utils
 from rich.text import Text
 
 
 class Board:
     def __init__(self, game_mode):
         self.board_array = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0])
+        self.computer_json_data = Utils.load_json(
+            name=json_file_name, data=computer_json_data
+        )
         self.game_mode = game_mode
         self.map_value = None
         self.map_value_file = None
