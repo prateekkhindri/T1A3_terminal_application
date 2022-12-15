@@ -73,6 +73,24 @@ class Utils:
             json.dump(data, f, indent=4)
 
     @classmethod
+    def write_session_file(self, session_file, player_name, map_value_file, board_values):
+        session_file.write(f"\tCurrent Player: {player_name}\n")
+        session_file.write("\n\tCurrent State Of Board :\n")
+        session_file.write("\t     |     |\n")
+        session_file.write("\t  {}  |  {}  |  {}\n".format(map_value_file.get(
+            board_values[0]), map_value_file.get(board_values[1]), map_value_file.get(board_values[2])))
+        session_file.write('\t_____|_____|_____\n')
+        session_file.write("\t     |     |\n")
+        session_file.write("\t  {}  |  {}  |  {}\n".format(map_value_file.get(
+            board_values[3]), map_value_file.get(board_values[4]), map_value_file.get(board_values[5])))
+        session_file.write('\t_____|_____|_____\n')
+        session_file.write("\t     |     |\n")
+        session_file.write("\t  {}  |  {}  |  {}\n".format(map_value_file.get(
+            board_values[6]), map_value_file.get(board_values[7]), map_value_file.get(board_values[8])))
+        session_file.write("\t     |     |\n")
+        session_file.write("\n")
+
+    @classmethod
     def ask_save(self):
         while True:
             askForSave = input("\n\tSave User Data? [yes|no]:")
