@@ -36,6 +36,12 @@ console = Console()
 
 json_file_name = "computer.json"
 
+multi_json_file_name = "multiplayer.json"
+
+multi_json_data = {
+    "player": {},
+}
+
 computer_json_data = {
     "player": {},
     "computer": {

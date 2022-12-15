@@ -1,5 +1,5 @@
 import termcolor
-from constants import style, game_mode_options, title, json_file_name
+from constants import style, game_mode_options, title, json_file_name, multi_json_file_name
 from prompt_toolkit.shortcuts import yes_no_dialog
 from lib.display import Display
 from board import Board
@@ -31,6 +31,13 @@ class Game:
                     decision=decision,
                     key=self.game_result.player.name,
                     player=self.game_result.current_player_symbol)
+            elif self.game_mode_choice == 2:
+                Utils.save_multi_data_json(
+                    name=multi_json_file_name,
+                    data=self.game_result.multi_json_data,
+                    decision=decision,
+                    user1=self.game_result.player2.name,
+                    user2=self.game_result.player1.name)
 
     def welcome_screen(self):
         return yes_no_dialog(

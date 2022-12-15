@@ -45,6 +45,34 @@ class Utils:
             json.dump(data, f, indent=4)
 
     @classmethod
+    def save_multi_data_json(self, name, data, decision, user1, user2):
+        if user1 not in data['player'].keys():
+            data['player'][user1] = {
+                "wins": 0,
+                "losses": 0,
+                "draw": 0
+            }
+        if user2 not in data['player'].keys():
+            data['player'][user2] = {
+                "wins": 0,
+                "losses": 0,
+                "draw": 0
+            }
+
+        if decision == 0:
+            data['player'][user1]['draw'] += 1
+            data['player'][user2]['draw'] += 1
+        elif decision == 2:
+            data['player'][user1]['wins'] += 1
+            data['player'][user2]['losses'] += 1
+        else:
+            data['player'][user1]['losses'] += 1
+            data['player'][user2]['wins'] += 1
+
+        with open(f"data/{name}", "w") as f:
+            json.dump(data, f, indent=4)
+
+    @classmethod
     def ask_save(self):
         while True:
             askForSave = input("\n\tSave User Data? [yes|no]:")

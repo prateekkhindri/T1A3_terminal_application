@@ -18,6 +18,9 @@ class Board:
         self.computer_json_data = Utils.load_json(
             name=json_file_name, data=computer_json_data
         )
+        self.multi_json_data = Utils.load_json(
+            name=multi_json_file_name, data=multi_json_data
+        )
         self.game_mode = game_mode
         self.map_value = None
         self.map_value_file = None
