@@ -2,7 +2,7 @@ from prompt_toolkit.styles import Style
 from rich.console import Console
 
 
-title = 'Tic Tac Toe'
+title = "Tic-Tac-Toe"
 
 
 game_mode_options = ["1", "2"]
@@ -17,6 +17,11 @@ color = {
     "text": "white",
 }
 
+initial_player_data = {
+    "x": "",
+    "o": ""
+}
+
 text_color = {
     "input_text": "bold green"
 }
@@ -29,7 +34,20 @@ style = Style.from_dict({
 
 console = Console()
 
+json_file_name = "computer.json"
+
+computer_json_data = {
+    "player": {},
+    "computer": {
+        "wins": 0,
+        "losses": 0,
+        "draw": 0
+    }
+}
+
 player_symbol = {
     1: "X",
     2: "O"
 }
+
+history = "history"
