@@ -10,6 +10,7 @@ from constants import *
 from lib.ai import AI
 from lib.utils import Utils
 from rich.text import Text
+from uuid import uuid4
 
 
 class Board:
@@ -43,7 +44,7 @@ class Board:
         Display.fancy_print("Playing With Computer")
         self.player.name = Prompt.ask(
             rainbow("\n\tEnter Player Name"), default="Player")
-        self.txt_file_name = f"{history}/{self.player.name}.txt"
+        self.txt_file_name = f"{history}/{self.player.name}-vs-{'Computer'}-{uuid4()}.txt"
         self.session_file = open(self.txt_file_name, "w", encoding="utf-8")
 
         print(f"\n\t Welcome {self.player.name}!")
@@ -159,7 +160,7 @@ class Board:
         self.player2.X = self.player1.name
         self.player1.O = self.player2.name
 
-        self.txt_file_name = f"{history}/{self.player1.name}-vs-{self.player2.name}.txt"
+        self.txt_file_name = f"{history}/{self.player1.name}-vs-{self.player2.name}-{uuid4()}.txt"
         self.session_file = open(self.txt_file_name, "w", encoding="utf-8")
 
         self.map_value = {
