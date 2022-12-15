@@ -22,9 +22,11 @@ class Board:
             name=multi_json_file_name, data=multi_json_data
         )
         self.game_mode = game_mode
+        self.session_file = None
         self.map_value = None
         self.map_value_file = None
         self.current_player_symbol = None
+        self.txt_file_name = None
         if game_mode == 1:
             self.player = Player()
         elif game_mode == 2:
@@ -41,6 +43,8 @@ class Board:
         Display.fancy_print("Playing With Computer")
         self.player.name = Prompt.ask(
             rainbow("\n\tEnter Player Name"), default="Player")
+        self.txt_file_name = f"{history}/{self.player.name}.txt"
+        self.session_file = open(self.txt_file_name, "w", encoding="utf-8")
 
         print(f"\n\t Welcome {self.player.name}!")
 
@@ -220,6 +224,8 @@ class Board:
     def display_board(self, player_name, final=None):
         Display.show_board(self.map_value, player_name,
                            self.board_array, final)
+        Utils.write_session_file(
+            self.session_file, player_name, self.map_value_file, self.board_array)
 
     def multiplayer_user_turn(self, options=None, name=None):
         while True:
