@@ -159,6 +159,9 @@ class Board:
         self.player2.X = self.player1.name
         self.player1.O = self.player2.name
 
+        self.txt_file_name = f"{history}/{self.player1.name}-vs-{self.player2.name}.txt"
+        self.session_file = open(self.txt_file_name, "w", encoding="utf-8")
+
         self.map_value = {
             -1: '<ansigreen>X</ansigreen>',
             1: '<ansiyellow>O</ansiyellow>',
@@ -219,6 +222,8 @@ class Board:
         text.append(f'\t{name}', style=color.get(player))
         text.append(' Enter your position from [1-9]', style=color.get("text"))
         pos = Prompt.ask(text, choices=options)
+        self.session_file.write(
+            f"\t {name} Enter your position from [1-9] :"+str(pos))
         return pos
 
     def display_board(self, player_name, final=None):
