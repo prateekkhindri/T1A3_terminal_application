@@ -6,6 +6,7 @@ from rich.padding import Padding
 from rich.prompt import Prompt
 from constants import console, text_color
 from prompt_toolkit import print_formatted_text, HTML
+from pyfiglet import figlet_format
 
 
 class Display:
@@ -16,14 +17,17 @@ class Display:
 
     @classmethod
     def show_game_mode_select_screen(self):
-        print("\t---------------------------------------------------")
         termcolor.cprint(
-            "\t|        Welcome To Unbeatable Tictactoe          |", color="white", attrs=["bold"])
-        print("\t---------------------------------------------------")
-        print("\t              Developed with 💜 by ", end=" ")
-        termcolor.cprint("\n\n                        Prateek Khindri",
-                         color="green", attrs=["bold"])
-        print("\t---------------------------------------------------\n")
+            "               ---------------------------------------------------------------------", color="red", attrs=["bold"])
+        termcolor.cprint(figlet_format(
+            "\tUNBEATABLE Tic-Tac-Toe", font='puffy', justify="center", width=100), color="red")
+        termcolor.cprint(
+            "               ---------------------------------------------------------------------", color="red", attrs=["bold"])
+        print("\t                            Developed with 💜 by ", end=" ")
+        termcolor.cprint("\n\n                                      Prateek Khindri",
+                         color="blue", attrs=["bold"])
+        termcolor.cprint(
+            "               ---------------------------------------------------------------------", color="red", attrs=["bold"])
 
         table = Table(title="Select Game Mode",
                       title_justify="center", width=50)
