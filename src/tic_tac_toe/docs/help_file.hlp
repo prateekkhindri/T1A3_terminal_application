@@ -1,0 +1,42 @@
+      ----------------------------------------------------------------------------------------------------------------------
+      INSTRUCTIONS
+      ----------------------------------------------------------------------------------------------------------------------
+      - This is the tic-tac-toe board.
+
+                                     |     |
+                                     |     |   
+                                _____|_____|_____
+                                     |     |
+                                     |     |   
+                                _____|_____|_____
+                                     |     |
+                                     |     |   
+                                     |     |
+      
+      - Open a terminal on your computer and navigate to the directory where the tic tac toe application is saved.
+      - Run the application by typing ./bin/tic_tac_toe.sh and press Enter.
+      - The game will begin, and you will be prompted to select from two game mode options. Type in 1 or 2 and press Enter.
+      - You will then be prompted to select whether you want to play as X or O. Type in 1 or 2 and press Enter.
+      - You can choose a name to play with or press Enter and the default name option will be selected.
+      - The game will display a 3x3 grid, with each space represented by a number from 1 to 9.
+      - To make a move, type in the numbers [1 - 9] of the space where you want to place your symbol and press Enter.
+      - The game will then make its move and update the grid on the screen. Continue making moves until the game ends.
+
+      Note: This is an unbeatable tic tac toe game, so it is not possible to win against the computer. The best you can do is tie. However, you can still enjoy the challenge of trying to beat the computer and see how long you can last.
+
+      RULES:
+      ----------------------------------------------------------------------------------------------------------------------
+      - You can choose to play as 'X' or as 'O'.
+      - 'X' always goes first.
+      - To win, get three in a row: horizontally, vertically or diagonally.
+      - To play, type in the commands [1/2/3/4/5/6/7/8/9].
+      - Enter 'H' for help at any time.
+      - Press Ctrl+C or Cmd+C to exit the game at any time.
+
+      COMMAND LINE:
+      ----------------------------------------------------------------------------------------------------------------------
+      - View the help file 
+      - View detailed description
+      - Open game statistics file
+                                  	     
+                                    

@@ -1,0 +1,12 @@
+
+    About Unbeatable TicTacToe
+    ---------------------------------------------
+    Welcome to Unbeatable Tic Tac Toe! This is a terminal-based application written in Python3 that allows you to play Tic Tac Toe against an unbeatable computer opponent.
+
+    Unbeatable Tic Tac Toe features a user-friendly command-line interface as well as an AI that uses the minimax algorithm to always make the best move. The game is designed to be challenging and fun, and you can choose from two game modes to suit your skill level.
+
+    To play the game, simply run the python3 script in your terminal and follow the prompts. The game board is displayed in the terminal and you can make your moves by entering the commands [1 - 9].
+
+    The game is easy to use, so even if you're not familiar with tic tac toe or terminal applications, you should have no trouble getting started.
+
+    Hope you enjoy playing the unbeatable tic tac toe terminal application and that it provides you with hours of entertainment. Good luck and have fun!
