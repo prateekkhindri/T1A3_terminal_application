@@ -89,6 +89,15 @@ In addition, the session file management system allows users to store game data 
 
 To handle the flow of the game, the application uses variables and conditional control structures. This enables the application to determine whether a player wins or loses, as well as when a draw occurs. Variables are also used by the application to maintain track of each user's game progress and player data. The application handles any errors that may arise during gameplay, such as attempting an invalid move or loading a faulty `JSON` or `TXT` game file.
 
+## **Error Handling**
+
+### **Using Prompts instead of command inputs where possible**
+
+Initially, each input was provided using the command-line interface (CLI). Each input was then validated using a method and a 'while' loop. However, I realised that, whenever possible, employing Prompts would give a better user-friendly experience. Furthermore, because Prompts are more informative, they help to prevent errors. Debugging the application became easier as well, thanks to hints that provided helpful instructions.
+
+#### **Thoroughly testing all aspects of the game**
+
+Throughout the application's development, the game was tested. There are 11 test cases designed that are highly relevant to the game's operation. Three test scenarios are meant to put the AI (heart of the programme) minimax algorithm to the test in terms of predicting the optimal move and evaluating the situation on the board. User input has been checked to ensure that the application functions smoothly. The input format has been validated to ensure that the user's move is inside the board's borders. Before enabling a move, the state of the board has been checked to ensure that a cell is unoccupied. Invalid input has been addressed by using a 'while' loop to repeatedly request input until a valid input is provided. 
 ## **Flow Chart**
 
 ![Control Flow diagram](./docs/resources/flow_chart.png)
@@ -117,7 +126,7 @@ https://trello.com/b/52yMJzhX/t1a3-terminal-application
 
 There are several ways for downloading and installing the TicTacToe application.
 
-- **NOTE:** You must have python3 installed on the system in order to run this application
+   - **NOTE:** You must have python3 installed on the system in order to run this application. Please visit [python.org](https://www.python.org/downloads/) to download the latest version of python3. Run ```python3 --version``` to check version of python3 installed 
 
 1. Clone the git repository using the command:
 
@@ -131,21 +140,8 @@ There are several ways for downloading and installing the TicTacToe application.
 
 3. Then, open the command line terminal app.
 
-   - If running from a UNIX system, Mac, LINUX distribution system such as (Ubuntu), navigate to the application folder, and type in command line:
+   - If running from a UNIX system, Mac, LINUX distribution system such as (Ubuntu), navigate to the application folder, and run ```bash ./bin/setup.sh``` which will install all the required dependencies and activate the virtual environment. Once completed, run ```bash ./bin/tic_tac_toe.sh``` which will then start the TicTacToe application.
 
-   ```
-   pip3 install -r  ./requirements.txt
-   ./bin/tic_tac_toe.sh
-   ```
-
-   - Alternatively, if using Windows, open Windows Powershell, navigate to the app folder, and type:
-
-   ```
-   pip3 install -r  ./requirements.txt
-
-   ```
-
-   Any dependencies required by the application will be installed after you run the `pip3 install -r  ./requirements.txt` command.
 
    If the packages don't get installed correctly, you can use the `pip3 install` command to install the following python3 packages manually:
 
@@ -165,7 +161,7 @@ There are several ways for downloading and installing the TicTacToe application.
    If using UNIX, Mac, Linux, Ubuntu, WSL, simply run:
 
    ```
-    ./bin/tic_tac_toe.sh
+   bash ./bin/tic_tac_toe.sh
    ```
 
    If using Windows Powershell:
@@ -195,3 +191,24 @@ Before the application can be used, the user must install these python3 packages
 ### **Hardware Requirements**
 
 The TicTacToe game is expected to run in practically any Unix, Linux, Mac, or Windows-based system. Overall, the hardware and software requirements for running this terminal application are not overly demanding, and most modern computers should be able to run it without any issues.
+
+
+## **Command Line Arguments**
+
+### **User Interaction and Experience**
+
+The user will learn how to interact with each feature of the application in a variety of ways. The help file `/src/tic_tac_toe/docs/help.hlp` contains all of the instructions and commands required to play the game. The game is described in the `./src/tic tac toe/docs/about.hlp` file. Furthermore, the user can check game statistics, help and about files, and conduct tests by running the following commands:
+
+```
+bash ./bin/tic_tac_toe.sh --help --h -h -help
+bash ./bin/tic_tac_toe.sh --about --a -a -about
+bash ./bin/tic_tac_toe.sh --stats --s -s -stats
+bash ./bin/tic_tac_toe.sh --test --t -t -test
+```
+
+## **References**
+
+1. *Hussain, A.* (n.d.). Minimax Algorithm in Game Theory (Set Introduction. GeeksforGeeks., viewed 11 December 2022, <https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-1-introduction/>
+
+2. *Esambo, J.* (2017). AI Finds Optimal Positions., viewed 11 December 2022, <https://relishapp.com/esambo/tic-tac-toe/docs/ai-finds-optimal-positions>
+
