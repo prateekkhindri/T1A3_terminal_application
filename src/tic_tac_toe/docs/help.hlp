@@ -1,6 +1,6 @@
-      ----------------------------------------------------------------------------------------------------------------------
+      ---------------------------------------------------------------------------------------------------------------------------
       INSTRUCTIONS
-      ----------------------------------------------------------------------------------------------------------------------
+      ---------------------------------------------------------------------------------------------------------------------------
       - This is the tic-tac-toe board.
 
                                      |     |
@@ -22,20 +22,22 @@
       - To make a move, type in the numbers [1 - 9] of the space where you want to place your symbol and press Enter.
       - The game will then make its move and update the grid on the screen. Continue making moves until the game ends.
 
-      Note: This is an unbeatable tic tac toe game, so it is not possible to win against the computer. The best you can do is tie. However, you can still enjoy the challenge of trying to beat the computer and see how long you can last.
+      Note: This is an unbeatable tic tac toe game, so it is not possible to win against the computer. The best you can do is tie. 
+      However, you can still enjoy the challenge of trying to beat the computer and see how long you can last.
 
       RULES:
-      ----------------------------------------------------------------------------------------------------------------------
+      ----------------------------------------------------------------------------------------------------------------------------
       - You can choose to play as 'X' or as 'O'.
       - 'X' always goes first.
       - To win, get three in a row: horizontally, vertically or diagonally.
       - To play, type in the commands [1/2/3/4/5/6/7/8/9].
-      - Enter 'H' for help at any time.
       - Press Ctrl+C or Cmd+C to exit the game at any time.
 
       COMMAND LINE:
-      ----------------------------------------------------------------------------------------------------------------------
-      - View the help file using "./bin/tic_tac_toe.sh --help" or "./bin/tic_tac_toe.sh --h"
-      - View detailed description using "./bin/tic_tac_toe.sh --about" or "./bin/tic_tac_toe.sh --a"
-      - Open game statistics file using "./bin/tic_tac_toe.sh --stats" or "./bin/tic_tac_toe.sh --s"
+      ---------------------------------------------------------------------------------------------------------------------------
+      - To view help file       => ./bin/tic_tac_toe.sh --help, --h, -h, -help                    
+      - Detailed description    => ./bin/tic_tac_toe.sh --about, --a, -a, -about      
+      - Open a gamestats file   => ./bin/tic_tac_toe.sh --stats, --s, -s, -stats 
+      - To run tests            => ./bin/tic_tac_toe.sh --test, --t, -t, -test
+      ---------------------------------------------------------------------------------------------------------------------------
                                   	     
