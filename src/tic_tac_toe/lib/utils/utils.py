@@ -4,13 +4,13 @@ import json
 
 class Utils:
     @classmethod
-    def get_key(self, dict, val):
+    def get_key(cls, dict, val):
         for key, value in dict.items():
             if val == value:
                 return key
 
     @classmethod
-    def load_json(self, name, data=None):
+    def load_json(cls, name, data=None):
         if not os.path.exists("data/"):
             os.mkdir("data/")
         if not os.path.exists(os.path.join("data/", name)):
@@ -22,7 +22,7 @@ class Utils:
         return json.load(f)
 
     @classmethod
-    def save_json(self, name, data, decision, key, player):
+    def save_json(cls, name, data, decision, key, player):
         if key not in data['player'].keys():
             data['player'][key] = {
                 "wins": 0,
@@ -44,7 +44,7 @@ class Utils:
             json.dump(data, f, indent=4)
 
     @classmethod
-    def save_multi_data_json(self, name, data, decision, user1, user2):
+    def save_multi_data_json(cls, name, data, decision, user1, user2):
         if user1 not in data['player'].keys():
             data['player'][user1] = {
                 "wins": 0,
@@ -72,7 +72,7 @@ class Utils:
             json.dump(data, f, indent=4)
 
     @classmethod
-    def write_session_file(self, session_file, player_name, map_value_file, board_values):
+    def write_session_file(cls, session_file, player_name, map_value_file, board_values):
         session_file.write(f"\tCurrent Player: {player_name}\n")
         session_file.write("\n\tCurrent State Of Board :\n")
         session_file.write("\t     |     |\n")
@@ -90,7 +90,7 @@ class Utils:
         session_file.write("\n")
 
     @classmethod
-    def clear(self):
+    def clear(cls):
         # For windows
         if os.name == 'nt':
             os.system('cls')

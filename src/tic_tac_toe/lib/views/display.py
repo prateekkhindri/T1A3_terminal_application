@@ -11,12 +11,12 @@ from pyfiglet import figlet_format
 
 class Display:
     @classmethod
-    def rich_input(self, text, options):
+    def rich_input(cls, text, options):
         text = Text(text, style=text_color['input_text'])
         return Prompt.ask(text, choices=options)
 
     @classmethod
-    def show_game_mode_select_screen(self):
+    def show_game_mode_select_screen(cls):
         termcolor.cprint(
             "               ---------------------------------------------------------------------", color="red", attrs=["bold"])
         termcolor.cprint(figlet_format(
@@ -40,7 +40,7 @@ class Display:
         console.print(Padding(table, pad=(2, 0, 1, 8)))
 
     @classmethod
-    def show_select_symbol_screen(self):
+    def show_select_symbol_screen(cls):
         table = Table(title="Select Symbol", title_justify="center", width=50)
         table.add_column("S.No", style="cyan", no_wrap=True)
         table.add_column("Symbol", style="magenta")
@@ -51,14 +51,14 @@ class Display:
         console.print(Padding(table, pad=(2, 0, 1, 8)))
 
     @classmethod
-    def fancy_print(self, text):
+    def fancy_print(cls, text):
         print("\t---------------------------------------------------")
         termcolor.cprint(
             f"\t|              {text}              |", color="white")
         print("\t---------------------------------------------------")
 
     @classmethod
-    def show_player_info(self, player):
+    def show_player_info(cls, player):
         print("\t---------------------------------------------------")
         termcolor.cprint(
             f"\t|               Player Information                |", color="white")
@@ -70,7 +70,7 @@ class Display:
         print("\t---------------------------------------------------\n")
 
     @classmethod
-    def show_player_info_multiplayer(self, player1, player2):
+    def show_player_info_multiplayer(cls, player1, player2):
         print("\t---------------------------------------------------")
         termcolor.cprint(
             f"\t|               Player Information                |", color="white")
@@ -82,7 +82,7 @@ class Display:
         print("\t---------------------------------------------------\n")
 
     @classmethod
-    def show_board(self, map_value, player_name, board_values, final):
+    def show_board(cls, map_value, player_name, board_values, final):
         if final == None:
             termcolor.cprint(
                 f"\n\tCurrent Player: {player_name}\n", color="yellow")
