@@ -1,5 +1,6 @@
 from lib.utils.ai import AI
 from lib.models.board import Board
+import os
 
 
 def test_minimax():
@@ -52,6 +53,7 @@ def test_make_decision():
     }
     board.session_file = open("test.txt", "w", encoding="utf-8")
     assert AI.make_decision(board) == 1
+    os.remove("test.txt")
 
 
 def test_make_decision2():
@@ -67,6 +69,7 @@ def test_make_decision2():
     }
     board.session_file = open("test.txt", "w", encoding="utf-8")
     assert AI.make_decision(board) == 0
+    os.remove("test.txt")
 
 
 def test_make_decision3():
@@ -82,3 +85,4 @@ def test_make_decision3():
     }
     board.session_file = open("test.txt", "w", encoding="utf-8")
     assert AI.make_decision(board) == 2
+    os.remove("test.txt")
