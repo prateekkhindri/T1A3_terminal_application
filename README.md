@@ -95,7 +95,7 @@ To handle the flow of the game, the application uses variables and conditional c
 
 Initially, each input was provided using the command-line interface (CLI). Each input was then validated using a method and a 'while' loop. However, I realised that, whenever possible, employing Prompts would give a better user-friendly experience. Furthermore, because Prompts are more informative, they help to prevent errors. Debugging the application became easier as well, thanks to hints that provided helpful instructions.
 
-#### **Thoroughly testing all aspects of the game**
+### **Thoroughly testing all aspects of the game**
 
 Throughout the application's development, the game was tested. There are 11 test cases designed that are highly relevant to the game's operation. Three test scenarios are meant to put the AI (heart of the programme) minimax algorithm to the test in terms of predicting the optimal move and evaluating the situation on the board. User input has been checked to ensure that the application functions smoothly. The input format has been validated to ensure that the user's move is inside the board's borders. Before enabling a move, the state of the board has been checked to ensure that a cell is unoccupied. Invalid input has been addressed by using a 'while' loop to repeatedly request input until a valid input is provided. 
 ## **Flow Chart**
