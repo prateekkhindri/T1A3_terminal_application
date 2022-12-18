@@ -42,8 +42,8 @@ class Board:
 
     def play_with_computer(self):
         Display.fancy_print("Playing With Computer")
-        self.player.name = Prompt.ask(
-            rainbow("\n\tEnter Player Name"), default="Player")
+        self.player.setName(Prompt.ask(
+            rainbow("\n\tEnter Player Name"), default="Player"))
         self.txt_file_name = f"{history}/{self.player.name}-vs-{'Computer'}-{str(uuid4())[0:7]}.txt"
         self.session_file = open(self.txt_file_name, "w", encoding="utf-8")
 
@@ -55,8 +55,8 @@ class Board:
             "\n\tEnter one of the above options", options=symbol_options))
 
         if self.current_player_symbol == 1:
-            self.player.X = self.player.name
-            self.player.O = "Computer"
+            self.player.setX(self.player.name)
+            self.player.setO("Computer")
 
             self.map_value = {
                 -1: '<ansigreen>X</ansigreen>',
@@ -70,7 +70,7 @@ class Board:
                 0: " "
             }
 
-            Display.show_player_info(self.player, mode=f"Player Information")
+            Display.show_player_info(self.player)
 
             print("\n\tX goes first....")
             print(emoji.emojize("\n\tLets get started :red_heart:",
@@ -89,10 +89,10 @@ class Board:
             return self
 
         else:
-            self.player.X = "Computer"
-            self.player.O = self.player.name
+            self.player.setX("Computer")
+            self.player.setO(self.player.name)
 
-            Display.show_player_info(self.player, mode=f"Player Information")
+            Display.show_player_info(self.player)
 
             self.map_value = {
                 -1: '<ansigreen>O</ansigreen>',
@@ -150,15 +150,15 @@ class Board:
 
     def play_with_player(self):
         Display.fancy_print("Playing In Multiplayer")
-        self.player1.name = Prompt.ask(
-            rainbow("\n\tEnter Player Name X >"), default="Player X")
+        self.player1.setName(Prompt.ask(
+            rainbow("\n\tEnter Player Name X >"), default="Player X"))
         self.player1.X = self.player1.name
 
-        self.player2.name = Prompt.ask(
-            rainbow("\n\tEnter Player Name O >"), default="Player O")
-        self.player2.O = self.player2.name
-        self.player2.X = self.player1.name
-        self.player1.O = self.player2.name
+        self.player2.setName(Prompt.ask(
+            rainbow("\n\tEnter Player Name O >"), default="Player O"))
+        self.player2.setO(self.player2.name)
+        self.player2.setX(self.player1.name)
+        self.player1.setO(self.player2.name)
 
         self.txt_file_name = f"{history}/{self.player1.name}-vs-{self.player2.name}-{uuid4()}.txt"
         self.session_file = open(self.txt_file_name, "w", encoding="utf-8")
@@ -176,6 +176,7 @@ class Board:
         }
 
         print(f"\n\tWelcome {self.player1.name} and {self.player2.name}!")
+        Display.show_player_info_multiplayer(self.player1, self.player2)
         print("\n\tX goes first....")
         print(emoji.emojize("\n\tLets get started :red_heart:",
                             variant="emoji_type"))
@@ -223,8 +224,9 @@ class Board:
         text.append(f'\t{name}', style=color.get(player))
         text.append(' Enter your position from [1-9]', style=color.get("text"))
         pos = Prompt.ask(text, choices=options)
-        self.session_file.write(
-            f"\t {name} Enter your position from [1-9] :"+str(pos))
+        if self.session_file is not None:
+            self.session_file.write(
+                f"\t {name} Enter your position from [1-9] :"+str(pos))
         return pos
 
     def display_board(self, player_name, final=None):

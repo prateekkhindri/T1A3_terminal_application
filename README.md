@@ -91,7 +91,7 @@ To handle the flow of the game, the application uses variables and conditional c
 
 ## **Flow Chart**
 
-[Control Flow diagram]()
+![Control Flow diagram](./docs/resources/flow_chart.png)
 
 ## **Implementation Plan and Design**
 

@@ -1,6 +1,7 @@
 from lib.utils.ai import AI
 from lib.models.board import Board
 import os
+import numpy as np
 
 
 def test_minimax():
@@ -42,9 +43,9 @@ def test_analyze_board3():
 
 def test_make_decision():
     board = Board(1)
-    board.board_array = [-1, -1, -1,
-                         0,  0,  1,
-                         0,  0,  1]
+    board.board_array = np.array([-1, -1, -1,
+                                  0,  0,  1,
+                                  0,  0,  1])
     board.map_value = {-1: 'X', 1: 'O', 0: ' '}
     board.map_value_file = {
         -1: 'X',
@@ -58,9 +59,9 @@ def test_make_decision():
 
 def test_make_decision2():
     board = Board(1)
-    board.board_array = [-1, 0, 0,
-                         0, 0, 0,
-                         0, 0, 0]
+    board.board_array = np.array([-1, 0, 0,
+                                  0, 0, 0,
+                                  0, 0, 0])
     board.map_value = {-1: 'X', 1: 'O', 0: ' '}
     board.map_value_file = board.map_value_file = {
         -1: 'X',
@@ -74,9 +75,9 @@ def test_make_decision2():
 
 def test_make_decision3():
     board = Board(1)
-    board.board_array = [1,  1,   1,
-                         0,  0,  -1,
-                         0,  0,  -1]
+    board.board_array = np.array([1,  1,   1,
+                                  0,  0,  -1,
+                                  0,  0,  -1])
     board.map_value = {-1: 'X', 1: 'O', 0: ' '}
     board.map_value_file = {
         -1: 'X',

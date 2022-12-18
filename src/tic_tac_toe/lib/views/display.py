@@ -1,9 +1,9 @@
 import termcolor
-import rich
 import emoji
 from rich.table import Table
 from rich.padding import Padding
 from rich.prompt import Prompt
+from rich.text import Text
 from lib.utils.constants import console, text_color
 from prompt_toolkit import print_formatted_text, HTML
 from pyfiglet import figlet_format
@@ -12,7 +12,7 @@ from pyfiglet import figlet_format
 class Display:
     @classmethod
     def rich_input(self, text, options):
-        text = rich.text.Text(text, style=text_color.get('input_text'))
+        text = Text(text, style=text_color['input_text'])
         return Prompt.ask(text, choices=options)
 
     @classmethod
@@ -58,15 +58,27 @@ class Display:
         print("\t---------------------------------------------------")
 
     @classmethod
-    def show_player_info(self, player, mode):
+    def show_player_info(self, player):
         print("\t---------------------------------------------------")
         termcolor.cprint(
-            f"\t|               {mode}                |", color="white")
+            f"\t|               Player Information                |", color="white")
         print("\t---------------------------------------------------")
         print(emoji.emojize(
             "                   \tPlayer X :heavy_equals_sign:  " + str(player.X)))
         print(emoji.emojize(
             "                   \tPlayer O :heavy_equals_sign:  " + str(player.O)))
+        print("\t---------------------------------------------------\n")
+
+    @classmethod
+    def show_player_info_multiplayer(self, player1, player2):
+        print("\t---------------------------------------------------")
+        termcolor.cprint(
+            f"\t|               Player Information                |", color="white")
+        print("\t---------------------------------------------------")
+        print(emoji.emojize(
+            "                   \tPlayer X :heavy_equals_sign:  " + str(player1.X)))
+        print(emoji.emojize(
+            "                   \tPlayer O :heavy_equals_sign:  " + str(player2.O)))
         print("\t---------------------------------------------------\n")
 
     @classmethod
