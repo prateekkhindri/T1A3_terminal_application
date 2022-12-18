@@ -27,10 +27,10 @@ https://github.com/prateekkhindri/T1A3_terminal_application
 
 ### **Presentation Video**
 
-A link to the video presentation can be found here [link](). The video was uploaded to [Vimeo](https://vimeo.com/)
+A link to the video presentation can be found here [link](https://vimeo.com/782239161). The video was uploaded to [Vimeo](https://vimeo.com/)
 
 ```
-https://vimeo.com/
+https://vimeo.com/782239161
 ```
 
 ## **Style guide or styling conventions**
