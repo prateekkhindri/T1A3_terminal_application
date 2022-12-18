@@ -1,11 +1,11 @@
 import time
 import termcolor
-from constants import style, game_mode_options, title, json_file_name, multi_json_file_name
+from lib.utils.constants import style, game_mode_options, title, json_file_name, multi_json_file_name
 from prompt_toolkit.shortcuts import yes_no_dialog, button_dialog, message_dialog
-from lib.display import Display
-from board import Board
-from lib.ai import AI
-from lib.utils import Utils
+from lib.views.display import Display
+from lib.models.board import Board
+from lib.utils.ai import AI
+from lib.utils.utils import Utils
 
 
 class Game:
@@ -19,9 +19,9 @@ class Game:
         if start_game:
             self.game_mode_choice = self.select_game_mode()
             self.board = Board(self.game_mode_choice)
-            self.game_result = self.board.play(self.game_mode_choice)
+            self.game_result = self.board.play()
             decision = AI.make_decision(self.game_result)
-            if Utils.ask_save() == "yes":
+            if self.ask_save() == "yes":
                 termcolor.cprint(
                     "\n\tSuccessfully saved user data in the data directory", color="green")
 
@@ -73,6 +73,19 @@ class Game:
         )
 
         return int(user_option)
+
+    def ask_save(self):
+        while True:
+            askForSave = input("\n\tSave User Data? [yes|no]:")
+            if (askForSave == "yes"):
+                break
+            elif (askForSave == "no"):
+                break
+            else:
+                termcolor.cprint(
+                    "\n\tPlease select one of the available options", color="red")
+                continue
+        return askForSave
 
     def quit(self):
         message_dialog(

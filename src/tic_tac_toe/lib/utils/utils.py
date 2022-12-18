@@ -1,6 +1,5 @@
 import os
 import json
-import termcolor
 
 
 class Utils:
@@ -94,22 +93,8 @@ class Utils:
     def clear(self):
         # For windows
         if os.name == 'nt':
-            _ = os.system('cls')
+            os.system('cls')
 
         # For mac and linux(os name is posix)
         else:
-            _ = os.system('clear')
-
-    @classmethod
-    def ask_save(self):
-        while True:
-            askForSave = input("\n\tSave User Data? [yes|no]:")
-            if (askForSave == "yes"):
-                break
-            elif (askForSave == "no"):
-                break
-            else:
-                termcolor.cprint(
-                    "\n\tPlease select one of the available options", color="red")
-                continue
-        return askForSave
+            os.system('clear')

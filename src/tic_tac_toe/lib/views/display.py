@@ -4,7 +4,7 @@ import emoji
 from rich.table import Table
 from rich.padding import Padding
 from rich.prompt import Prompt
-from constants import console, text_color
+from lib.utils.constants import console, text_color
 from prompt_toolkit import print_formatted_text, HTML
 from pyfiglet import figlet_format
 

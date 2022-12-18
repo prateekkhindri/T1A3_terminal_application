@@ -1,6 +1,6 @@
 import os
-from game import Game
-from constants import history
+from lib.models.game import Game
+from lib.utils.constants import history
 
 
 def main():

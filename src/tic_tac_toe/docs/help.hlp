@@ -35,8 +35,7 @@
 
       COMMAND LINE:
       ----------------------------------------------------------------------------------------------------------------------
-      - View the help file 
-      - View detailed description
-      - Open game statistics file
+      - View the help file using "./bin/tic_tac_toe.sh --help" or "./bin/tic_tac_toe.sh --h"
+      - View detailed description using "./bin/tic_tac_toe.sh --about" or "./bin/tic_tac_toe.sh --a"
+      - Open game statistics file using "./bin/tic_tac_toe.sh --stats" or "./bin/tic_tac_toe.sh --s"
                                   	     
-                                    

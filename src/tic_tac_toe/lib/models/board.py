@@ -2,13 +2,13 @@ import numpy as np
 import termcolor
 import emoji
 import time
-from lib.display import Display
-from player import Player
-from rainbow_highlighter import rainbow
+from lib.views.display import Display
+from lib.models.player import Player
+from lib.utils.rainbow_highlighter import rainbow
 from rich.prompt import Prompt
-from constants import *
-from lib.ai import AI
-from lib.utils import Utils
+from lib.utils.constants import *
+from lib.utils.ai import AI
+from lib.utils.utils import Utils
 from rich.text import Text
 from uuid import uuid4
 
@@ -34,17 +34,17 @@ class Board:
             self.player1 = Player()
             self.player2 = Player()
 
-    def play(self, mode):
-        if mode == 1:
+    def play(self):
+        if self.game_mode == 1:
             return self.play_with_computer()
-        elif mode == 2:
+        elif self.game_mode == 2:
             return self.play_with_player()
 
     def play_with_computer(self):
         Display.fancy_print("Playing With Computer")
         self.player.name = Prompt.ask(
             rainbow("\n\tEnter Player Name"), default="Player")
-        self.txt_file_name = f"{history}/{self.player.name}-vs-{'Computer'}-{uuid4()}.txt"
+        self.txt_file_name = f"{history}/{self.player.name}-vs-{'Computer'}-{str(uuid4())[0:7]}.txt"
         self.session_file = open(self.txt_file_name, "w", encoding="utf-8")
 
         print(f"\n\t Welcome {self.player.name}!")
